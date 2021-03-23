@@ -33,7 +33,7 @@ and as_string1 (op:string) (id:string) =
 
 and as_string2 = function 
   | [] -> ""
-  | x::y -> as_string x ^ (as_string3 y)
+  | x::y -> as_string x ^ (as_string2 y)
 
 and as_string3 x y =
   as_string x ^ "=" ^ as_string y
