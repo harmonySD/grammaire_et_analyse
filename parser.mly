@@ -6,7 +6,7 @@ open Ast
 %token <int> NB
 %token <string> IDENT
 
-%start <Ast.token> programme 
+%start <Ast.expression> programme 
 %%
 
 programme:
@@ -29,7 +29,7 @@ blocInstruction:
   | { }
 
 expression:
-  NB; eS=expressionSuite { eS }
+  NB eS=expressionSuite { eS }
   | IDENT eS=expressionSuite { Ident eS }
   | LPAR e=expression RPAR eS=expressionSuite { e eS }
 
