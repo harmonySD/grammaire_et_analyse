@@ -20,10 +20,10 @@ let rec as_string = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Nombre n -> string_of_int n
-  | Debut bloc -> as_string1 "Debut" (as_string3 bloc)
+  | Debut bloc -> as_string1 "Debut" (as_string2 bloc)
   | Avance x -> as_string1 "Avance" (as_string x)
   | Tourne x ->  as_string1 "Tourne" (as_string x)
-  | Egal (x,y) -> as_string4 x y
+  | Egal (x,y) -> as_string3 x y
   | Plus x -> as_string1 "+" (as_string x)
   | Moins x -> as_string1 "-" (as_string x) 
 
@@ -31,9 +31,9 @@ let rec as_string = function
 and as_string1 (op:string) (id:string) =
   op ^ id
 
-and as_string3 = function 
+and as_string2 = function 
   | [] -> ""
   | x::y -> as_string x ^ (as_string3 y)
 
-and as_string4 x y =
+and as_string3 x y =
   as_string x ^ "=" ^ as_string y
