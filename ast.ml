@@ -9,8 +9,8 @@ type expression =
   | BasPinceau
   | HautPinceau
   | Nombre of int 
-  | Plus of expression * expression
-  | Moins of expression * expression
+  | Plus of expression 
+  | Moins of expression 
 
 
 let rec as_string = function
@@ -20,14 +20,17 @@ let rec as_string = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Nombre n -> string_of_int n
-  | Debut bloc -> as_string3 
-  | 
+  | Debut bloc -> as_string3 bloc
+  | Plus
 
 
 and apply1 op id =
   "("^op^" "^as_string i^")"
 
-and 
+and as_string2 =function
+  | y -> as_string y ^ " Fin"
+  | x::y -> as_string x ^ as_string2 y
 
 and as_string3 = function 
+  | y -> as_string y
   | x::y -> "Debut"^ as_string x ^ as_string2 y
