@@ -2,10 +2,10 @@ type expression =
   | Identificateur of string
   | Var of expression
   | Pv 
-  | Debut of (expression) List
+  | Debut of expression list
   | Avance of expression
   | Tourne of expression
-  | Egal of expression * expresssion List
+  | Egal of expression * expression
   | BasPinceau
   | HautPinceau
   | Nombre of int 
@@ -15,22 +15,25 @@ type expression =
 
 let rec as_string = function
   | Identificateur i -> i
-  | Var i -> apply1 "Var" i
+  | Var i -> as_string1 "Var" (as_string i)
   | Pv -> ";"
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Nombre n -> string_of_int n
-  | Debut bloc -> as_string3 bloc
-  | Plus
+  | Debut bloc -> as_string1 "Debut" (as_string3 bloc)
+  | Avance x -> as_string1 "Avance" (as_string x)
+  | Tourne x ->  as_string1 "Tourne" (as_string x)
+  | Egal (x,y) -> as_string4 x y
+  | Plus x -> as_string1 "+" (as_string x)
+  | Moins x -> as_string1 "-" (as_string x) 
 
 
-and apply1 op id =
-  "("^op^" "^as_string i^")"
-
-and as_string2 =function
-  | y -> as_string y ^ " Fin"
-  | x::y -> as_string x ^ as_string2 y
+and as_string1 (op:string) (id:string) =
+  op ^ id
 
 and as_string3 = function 
-  | y -> as_string y
-  | x::y -> "Debut"^ as_string x ^ as_string2 y
+  | [] -> ""
+  | x::y -> as_string x ^ (as_string3 y)
+
+and as_string4 x y =
+  as_string x ^ "=" ^ as_string y
