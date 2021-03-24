@@ -8,9 +8,9 @@ type expression =
   | BasPinceau
   | HautPinceau
   | Nombre of int 
-  | Plus of expression 
-  | Moins of expression 
-
+  | Plus of expression
+  | Moins of expression
+  | Epsilon
 
 let rec as_string = function
   | Var i -> as_string1 "Var" (i)
