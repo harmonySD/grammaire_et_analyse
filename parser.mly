@@ -24,7 +24,7 @@ instruction:
   | TOURNE e=expression { Tourne e }
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
-  | id=IDENT EGAL e=expression { Egal(id,e) }(*Var (id,e*)
+  | id=IDENT EGAL e=expression { Egal(id,e) }
   | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
