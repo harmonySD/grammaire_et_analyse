@@ -1,37 +1,54 @@
-type expression =
+type expression = 
   | Var of string
-  | Pv 
-  | Debut of expression list
+  | Plus of expression * expression
+  | Moins of expression *expression
+  | Nombre of int
+
+type instruction =
+  | Debut of instruction list
   | Avance of expression
   | Tourne of expression
   | Egal of string * expression
   | BasPinceau
   | HautPinceau
-  | Nombre of int 
-  | Plus of expression 
-  | Moins of expression 
+
+
+
+type programme=
+  | Prog of string list * instruction
+
+
+let rec as_string_decla l = 
+  match l with 
+    |[]->""
+    |x::y -> "Var "^x^" "^as_string_decla y
+
 
 
 let rec as_string = function
-  | Var i -> as_string1 "Var" (i)
-  | Pv -> ";"
+  | Var i -> i
+  | Nombre n -> string_of_int n
+  | Plus (l,r) -> as_string1 "+" l r
+  | Moins (l,r) -> as_string1 "-" l r
+
+
+and as_string1 op l r =
+  "("^ as_string l ^ op ^ as_string r ^ ")"
+
+
+
+let rec as_string_instruction = function  
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
-  | Nombre n -> string_of_int n
-  | Debut bloc -> as_string1 "Debut" (as_string2 bloc)
-  | Avance x -> as_string1 "Avance" (as_string x)
-  | Tourne x ->  as_string1 "Tourne" (as_string x)
-  | Egal (x,y) -> as_string3 x y
-  | Plus x -> as_string1 "+" (as_string x)
-  | Moins x -> as_string1 "-" (as_string x) 
-
-
-and as_string1 (op:string) (id:string) =
-  op ^ id
+  | Debut bloc ->  "Debut "^(as_string2 bloc)
+  | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
+  | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
+  | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
 
 and as_string2 = function 
-  | [] -> ""
-  | x::y -> as_string x ^ (as_string2 y)
+  | [] -> "Fin"
+  | x::y -> as_string_instruction x ^ (as_string2 y)
 
-and as_string3 x y =
-  x ^ "=" ^ as_string y
+let as_string_programme prog = 
+  let (Prog (decla,instruc)) =prog in
+  "["^as_string_decla decla^ ";" ^as_string_instruction instruc^"]"
