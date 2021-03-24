@@ -1,5 +1,6 @@
 type expression =
-  | Var of string
+  | Var of expression
+  | Identificateur of string
   | Pv 
   | Debut of expression list
   | Avance of expression
@@ -13,7 +14,8 @@ type expression =
   | Epsilon
 
 let rec as_string = function
-  | Var i -> as_string1 "Var" (i)
+  | Identificateur i -> i
+  | Var i -> as_string1 "Var" (as_string i)
   | Pv -> ";"
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
@@ -21,17 +23,18 @@ let rec as_string = function
   | Debut bloc -> as_string1 "Debut" (as_string2 bloc)
   | Avance x -> as_string1 "Avance" (as_string x)
   | Tourne x ->  as_string1 "Tourne" (as_string x)
-  | Egal (x,y) -> as_string3 x y
-  | Plus x -> as_string1 "+" (as_string x)
+  | Egal (x,y) -> (as_string3 x y)
+  | Plus x ->  as_string1 "+" (as_string x)
   | Moins x -> as_string1 "-" (as_string x) 
+  | Epsilon -> ""
 
 
 and as_string1 (op:string) (id:string) =
   op ^ id
 
 and as_string2 = function 
-  | [] -> ""
+  | [] -> "FIN"
   | x::y -> as_string x ^ (as_string2 y)
 
 and as_string3 x y =
-  x ^ "=" ^ as_string y
+  x ^ "=" ^ (as_string y)

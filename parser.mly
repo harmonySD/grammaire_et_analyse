@@ -2,7 +2,7 @@
 open Ast
 %}
 
-%token VAR DEB FIN EGAL PLUS MOINS PV TOURNE AVANCE HPINCEAU BPINCEAU EOF LPAR RPAR
+%token VAR DEB FIN EGAL PLUS MOINS PV TOURNE AVANCE HPINCEAU BPINCEAU EOF LPAR RPAR TOKEN
 %token <int> NB
 %token <string> IDENT
 
@@ -13,9 +13,8 @@ programme:
   d=declarations i=instruction EOF { d i }
 
 declarations:
-  VAR i=IDENT PV d1=declarations { (Var i) Pv d1 }
-  | FIN { Epsilon } 
-
+  VAR i=IDENT PV d1=declarations { (Var (Identificateur(i))) d1 }
+  
 instruction:
   AVANCE e=expression { Avance e }
   | TOURNE e=expression { Tourne e }
@@ -25,15 +24,13 @@ instruction:
   | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
-  i=instruction PV b=blocInstruction { i Pv b }
-  | { Epsilon }
-
+  i=instruction PV b=blocInstruction { i b }
+ 
 expression:
   NB eS=expressionSuite { eS }
   | IDENT eS=expressionSuite { eS }
-  | LPAR e=expression RPAR eS=expressionSuite { e eS }
 
 expressionSuite:
   PLUS e=expression { Plus e }
   | MOINS e=expression { Moins e }
-  | { Epsilon } 
+ 
