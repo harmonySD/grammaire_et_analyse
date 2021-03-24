@@ -13,16 +13,16 @@ programme:
   d=declarations i=instruction EOF { d i }
 
 declarations:
-  VAR IDENT PV d1=declarations { Var Ident Pv d1 }
+  VAR IDENT PV d1=declarations { (Var Identificateur) Pv d1 }
   | { } 
 
 instruction:
-  AVANCE e=expression {Avance e }
+  AVANCE e=expression { Avance e }
   | TOURNE e=expression { Tourne e }
-  | BPINCEAU { Bpinceau }
-  | HPINCEAU { Hpinceau }
-  | IDENT EGAL e=expression { Ident Egal e }
-  | DEB b=blocInstruction FIN { Deb b Fin }
+  | BPINCEAU { BasPinceau }
+  | HPINCEAU { HautPinceau }
+  | i=IDENT EGAL e=expression { Egal(i,e) }
+  | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
   i = instruction PV b=blocInstruction { i Pv b }
@@ -30,10 +30,10 @@ blocInstruction:
 
 expression:
   NB eS=expressionSuite { eS }
-  | IDENT eS=expressionSuite { Ident eS }
+  | IDENT eS=expressionSuite { eS }
   | LPAR e=expression RPAR eS=expressionSuite { e eS }
 
 expressionSuite:
-  PLUS e1=expression { Plus e1 }
-  | MOINS e2=expression { Moins e2 }
+  PLUS e=expression { Plus e }
+  | MOINS e=expression { Moins e }
   | { } 
