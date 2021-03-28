@@ -2,38 +2,38 @@
 open Ast
 %}
 
-%token VAR DEB FIN EGAL PLUS MOINS PV TOURNE AVANCE HPINCEAU BPINCEAU EOF LPAR RPAR
+%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE HPINCEAU BPINCEAU EOF LPAR RPAR
 %token <int> NB
 %token <string> IDENT
 
-%start <Ast.expression> programme 
+%right PLUS
+%right MOINS
+
+%start <Ast.programme> programme 
 %%
 
 programme:
-  d=declarations i=instruction EOF { d i }
+  d=declarations i=instruction EOF { Prog (d,i) }
 
 declarations:
-  VAR IDENT PV d1=declarations { Var Ident Pv d1 }
-  | { } 
+  VAR id=IDENT  listdec=declarations{ id::listdec }
+  | {[]} 
 
 instruction:
-  AVANCE e=expression {Avance e }
+  AVANCE e=expression { Avance e }
   | TOURNE e=expression { Tourne e }
-  | BPINCEAU { Bpinceau }
-  | HPINCEAU { Hpinceau }
-  | IDENT EGAL e=expression { Ident Egal e }
-  | DEB b=blocInstruction FIN { Deb b Fin }
+  | BPINCEAU { BasPinceau }
+  | HPINCEAU { HautPinceau }
+  | id=IDENT EGAL e=expression { Egal(id,e) }
+  | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
-  i = instruction PV b=blocInstruction { i Pv b }
-  | { }
+  i = instruction  b=blocInstruction { i::b }
+  | {[]}
 
 expression:
-  NB eS=expressionSuite { eS }
-  | IDENT eS=expressionSuite { Ident eS }
-  | LPAR e=expression RPAR eS=expressionSuite { e eS }
-
-expressionSuite:
-  PLUS e1=expression { Plus e1 }
-  | MOINS e2=expression { Moins e2 }
-  | { } 
+  n = NB    {Nombre n}
+  | id = IDENT { Var id }
+  | e1 = expression PLUS e2 = expression    {Plus (e1,e2)}
+  | e1 = expression MOINS e2 = expression   {Moins (e1,e2)}
+  | LPAR e=expression RPAR { e }

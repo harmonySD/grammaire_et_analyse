@@ -2,24 +2,24 @@
   open Parser
 }
 let espace =[' ' '\t' '\n']
-let ident_char =[a-z]
-let nb =[0-9]
+let ident_char =['a'-'z']
+let nb =['0'-'9']
 
 rule main = parse
-  | espace          {main lexbuf}
+  | espace|";"        {main lexbuf}
   | "Debut"         {DEB}
-  | "Fin"           {Fin}
+  | "Fin"           {FIN}
   | "+"             {PLUS}
   | "-"             {MOINS}
   | "Var"           {VAR}
-  | "("             {LPAREN}
-  | ")"             {RPAREN}
+  | "("             {LPAR}
+  | ")"             {RPAR}
   | "HautPinceau"   {HPINCEAU}
   | "BasPinceau"    {BPINCEAU}
   | "Tourne"        {TOURNE}
   | "Avance"        {AVANCE}
-  | ";"             {PV}
   | "="             {EGAL}
-  | ident_char+     {IDENT Lexing.lexeme lexbuf}
-  | nb+             {NB Lexing.lexeme lexbuf}
+  | ident_char+ as i    {IDENT i}
+  | nb+ as n             {NB (int_of_string n)}
+  | eof              {EOF}
   | _               {failwith "unexpected character"}
