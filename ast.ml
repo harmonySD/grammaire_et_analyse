@@ -1,3 +1,5 @@
+type typ=
+  | Int
 type expression = 
   | Var of string
   | Plus of expression * expression
