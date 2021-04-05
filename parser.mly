@@ -28,7 +28,7 @@ instruction:
   | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
-  i = instruction  b=blocInstruction { i::b }
+  i = instruction b=blocInstruction { i::b }
   | {[]}
 
 expression:
