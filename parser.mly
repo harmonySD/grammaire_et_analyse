@@ -9,11 +9,13 @@ open Ast
 %right PLUS
 %right MOINS
 
-%start <Ast.programme> programme 
+%start <Ast.programme> s 
 %%
 
+s: p=programme EOF {p}
+
 programme:
-  d=declarations i=instruction EOF { Prog (d,i) }
+  d=declarations i=instruction  { Prog (d,i) }
 
 declarations:
   VAR id=IDENT  listdec=declarations{ id::listdec }
