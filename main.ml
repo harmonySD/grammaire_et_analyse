@@ -12,14 +12,21 @@ let print_position outx lexbuf =
       pos.pos_lnum
       (pos.pos_cnum - pos.pos_bol + 1)
   )
-    
+   
+
+ let _ = 
+  let lb = Lexing.from_channel stdin in
+  Lexer.main lb
+  
+  (*
 let _ =
   let lb = Lexing.from_channel stdin
   in
   try
     let ast =
-      Parser.s Lexer.main lb
-    in Typecheck.check_program ast; print_string "OK.\n"
+        Parser.s Lexer.main lb
+    in  Typecheck.check_program ast; print_string "OK.\n" 
+    
   with
   | Lexer.Error msg ->
      Printf.fprintf stderr "%a: Lexer error reading %s\n" print_position lb msg;
@@ -30,4 +37,4 @@ let _ =
   | Typecheck.Error s ->
      Printf.fprintf stderr "Type error: %s\n" s;
      exit (-1)
- 
+ *)

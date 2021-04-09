@@ -1,1 +1,1 @@
-main.ml: Ast Lexer Lexing Parser Printf Typecheck
+main.ml: Ast Lexer Lexing Parser Printf

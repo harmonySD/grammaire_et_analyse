@@ -15,6 +15,7 @@ type token =
   | BPINCEAU
   | AVANCE
 val menhir_begin_marker : int
+val xv_s : Ast.programme
 val xv_programme : Ast.programme
 val xv_instruction : Ast.instruction
 val xv_expression : Ast.expression

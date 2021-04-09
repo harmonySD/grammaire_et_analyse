@@ -1,5 +1,6 @@
 type typ=
   | Int
+
 type expression = 
   | Var of string
   | Plus of expression * expression
@@ -14,11 +15,8 @@ type instruction =
   | BasPinceau
   | HautPinceau
 
-
-
-type programme=
+type programme =
   | Prog of string list * instruction
-
 
 let rec as_string_decla l = 
   match l with 
@@ -51,6 +49,7 @@ and as_string2 = function
   | [] -> "Fin"
   | x::y -> as_string_instruction x ^ (as_string2 y)
 
-let as_string_programme prog = 
+
+ let as_string_programme prog = 
   let (Prog (decla,instruc)) =prog in
   "["^as_string_decla decla^ ";" ^as_string_instruction instruc^"]"
