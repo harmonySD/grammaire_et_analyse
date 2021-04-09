@@ -11,26 +11,23 @@ let rec get_declarations = function
 
 let rec type_expression decs = function
   | Nombre _ -> ()
-  | Ident s -> begin 
-          try List.assoc s decs
-          with Not_found -> raise
-                              (Error ("Variable not declared : "^s))
-  end
-  | Plus (l,r)-> ()
-  | Moins (l,r)-> ()
+  | Ident s -> if List.mem s decs 
+              then raise (Error ("Variable not declared : "^s))
+              else ()
+
+  | Plus _-> ()
+  | Moins _-> ()
 
 let rec check_instruction decs = function
-  | Egal (s,e) -> (try 
-                    if List.assoc s decs = type_expression decs e 
+  | Egal (s,e) ->  try 
+                    if List.mem s decs = type_expression decs e
                     then ()
-                    else 
-                        raise
-                          (Error ("Inconsistent types in assignement"))
-                  with Not_found ->
-                      raise (Error ("variable not declared "^s)))  
+                    else raise (Error ("jjdjrdjjso<"))
+                with Not_found ->
+                  raise (Error ("not declared "^s))
   
-  | Avance (e) -> ()
-  | Tourne e -> ()
+  | Avance _ -> ()
+  | Tourne  -> ()
   | BasPinceau -> ()
   | HautPinceau -> ()
               
