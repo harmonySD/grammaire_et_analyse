@@ -15,11 +15,10 @@ open Ast
 s: p=programme EOF {p}
 
 programme:
-  d=declarations i=instruction  { Prog (d,i) }
+  d=declarations* DEB i=blocInstruction* FIN {(d,i) } 
 
 declarations:
-  VAR id=IDENT  listdec=declarations{ id::listdec }
-  | {[]} 
+  VAR id=IDENT  { id }
 
 instruction:
   AVANCE e=expression { Avance e }
@@ -27,7 +26,6 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-  | DEB b=blocInstruction FIN { Debut b }
 
 blocInstruction:
   i = instruction  b=blocInstruction { i::b }

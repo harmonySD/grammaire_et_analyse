@@ -5,7 +5,7 @@ let ast = Parser.s Lexer.main lexbuf
 let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast)
 (* programme principal *)
 
-let print_position outx lexbuf =
+(*  let print_position outx lexbuf =
   Lexing.(
     let pos = lexbuf.lex_curr_p in
     Printf.fprintf outx "Ligne %d Col %d"
@@ -30,4 +30,4 @@ let _ =
   | Typecheck.Error s ->
      Printf.fprintf stderr "Type error: %s\n" s;
      exit (-1)
- 
+   *)
