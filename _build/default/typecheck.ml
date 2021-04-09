@@ -30,6 +30,7 @@ let rec type_expression decs = function
                   else raise (Error("Type error in op"))
 
 let rec check_instruction decs = function
+  | Debut li  -> List.iter (check_instruction decs) li 
   | Egal (s,e) -> (try 
                     if List.assoc s decs = type_expression decs e 
                     then ()

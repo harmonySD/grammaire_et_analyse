@@ -1,8 +1,9 @@
 # 1 "lexer.mll"
  
   open Parser
+  exception Error of string
 
-# 6 "lexer.ml"
+# 7 "lexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
    "\000\000\239\255\240\255\025\000\026\000\243\255\031\000\039\000\
@@ -135,99 +136,99 @@ let rec main lexbuf =
 and __ocaml_lex_main_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 9 "lexer.mll"
+# 10 "lexer.mll"
                       (main lexbuf)
-# 141 "lexer.ml"
+# 142 "lexer.ml"
 
   | 1 ->
-# 10 "lexer.mll"
+# 11 "lexer.mll"
                     (DEB)
-# 146 "lexer.ml"
+# 147 "lexer.ml"
 
   | 2 ->
-# 11 "lexer.mll"
+# 12 "lexer.mll"
                     (FIN)
-# 151 "lexer.ml"
+# 152 "lexer.ml"
 
   | 3 ->
-# 12 "lexer.mll"
+# 13 "lexer.mll"
                     (PLUS)
-# 156 "lexer.ml"
+# 157 "lexer.ml"
 
   | 4 ->
-# 13 "lexer.mll"
+# 14 "lexer.mll"
                     (MOINS)
-# 161 "lexer.ml"
+# 162 "lexer.ml"
 
   | 5 ->
-# 14 "lexer.mll"
+# 15 "lexer.mll"
                     (VAR)
-# 166 "lexer.ml"
+# 167 "lexer.ml"
 
   | 6 ->
-# 15 "lexer.mll"
+# 16 "lexer.mll"
                     (LPAR)
-# 171 "lexer.ml"
+# 172 "lexer.ml"
 
   | 7 ->
-# 16 "lexer.mll"
+# 17 "lexer.mll"
                     (RPAR)
-# 176 "lexer.ml"
+# 177 "lexer.ml"
 
   | 8 ->
-# 17 "lexer.mll"
+# 18 "lexer.mll"
                     (HPINCEAU)
-# 181 "lexer.ml"
+# 182 "lexer.ml"
 
   | 9 ->
-# 18 "lexer.mll"
+# 19 "lexer.mll"
                     (BPINCEAU)
-# 186 "lexer.ml"
+# 187 "lexer.ml"
 
   | 10 ->
-# 19 "lexer.mll"
+# 20 "lexer.mll"
                     (TOURNE)
-# 191 "lexer.ml"
+# 192 "lexer.ml"
 
   | 11 ->
-# 20 "lexer.mll"
+# 21 "lexer.mll"
                     (AVANCE)
-# 196 "lexer.ml"
+# 197 "lexer.ml"
 
   | 12 ->
-# 21 "lexer.mll"
+# 22 "lexer.mll"
                     (EGAL)
-# 201 "lexer.ml"
+# 202 "lexer.ml"
 
   | 13 ->
 let
-# 22 "lexer.mll"
+# 23 "lexer.mll"
                    i
-# 207 "lexer.ml"
+# 208 "lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 22 "lexer.mll"
+# 23 "lexer.mll"
                         (IDENT i)
-# 211 "lexer.ml"
+# 212 "lexer.ml"
 
   | 14 ->
 let
-# 23 "lexer.mll"
+# 24 "lexer.mll"
            n
-# 217 "lexer.ml"
+# 218 "lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 23 "lexer.mll"
+# 24 "lexer.mll"
                          (NB (int_of_string n))
-# 221 "lexer.ml"
+# 222 "lexer.ml"
 
   | 15 ->
-# 24 "lexer.mll"
+# 25 "lexer.mll"
                      (EOF)
-# 226 "lexer.ml"
+# 227 "lexer.ml"
 
   | 16 ->
-# 25 "lexer.mll"
+# 26 "lexer.mll"
                     (failwith "unexpected character")
-# 231 "lexer.ml"
+# 232 "lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_main_rec lexbuf __ocaml_lex_state
