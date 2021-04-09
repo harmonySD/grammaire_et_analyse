@@ -4,10 +4,10 @@ exception Error of string
 
 let rec get_declarations = function 
   | [] -> []
-  | (v,t)::r -> let rl = get_declarations r in 
-                if List.mem_assoc v rl
+  | v::r -> let rl = get_declarations r in 
+                if List.mem v rl
                 then raise (Error("Declared twice: "^v))
-                else (v,t)::rl
+                else v::rl
 
 let rec type_expression decs = function
   | Nombre _ -> ()
