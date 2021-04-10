@@ -18,16 +18,17 @@ let type_expression decs = function
   | Plus _-> true
   | Moins _-> true
 
+
 let rec check_instruction decs = function
-  | Egal (s,e) ->  try 
+  | Egal (s,e) ->  (try 
                     if List.mem s decs = type_expression decs e
                     then ()
                     else raise (Error ("jjdjrdjjso<"))
                 with Not_found ->
-                  raise (Error ("not declared "^s))
+                  raise (Error ("not declared "^s)))
   
   | Avance _ -> ()
-  | Tourne  -> ()
+  | Tourne _ -> ()
   | BasPinceau -> ()
   | HautPinceau -> ()
               

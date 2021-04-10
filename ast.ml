@@ -28,8 +28,6 @@ let rec as_string = function
   | Plus (l,r) -> as_string1 "+" l r
   | Moins (l,r) -> as_string1 "-" l r
 
-
-
 and as_string1 op l r =
   "("^ as_string l ^ op ^ as_string r ^ ")"
 
