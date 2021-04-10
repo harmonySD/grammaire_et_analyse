@@ -9,14 +9,14 @@ let rec get_declarations = function
                 then raise (Error("Declared twice: "^v))
                 else v::rl
 
-let rec type_expression decs = function
-  | Nombre _ -> ()
+let type_expression decs = function
+  | Nombre _ -> true
   | Ident s -> if List.mem s decs 
-              then raise (Error ("Variable not declared : "^s))
-              else ()
+              then false
+              else true
 
-  | Plus _-> ()
-  | Moins _-> ()
+  | Plus _-> true
+  | Moins _-> true
 
 let rec check_instruction decs = function
   | Egal (s,e) ->  try 
