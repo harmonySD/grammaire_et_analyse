@@ -17,8 +17,9 @@ type token =
 val menhir_begin_marker : int
 val xv_s : Ast.programme
 val xv_programme : Ast.programme
+val xv_list_instruction_ : Ast.instruction list
+val xv_list_declarations_ : string list
 val xv_instruction : Ast.instruction
 val xv_expression : Ast.expression
-val xv_declarations : string list
-val xv_blocInstruction : Ast.instruction list
+val xv_declarations : string
 val menhir_end_marker : int

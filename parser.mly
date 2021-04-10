@@ -15,7 +15,7 @@ open Ast
 s: p=programme EOF {p}
 
 programme:
-  d=declarations* DEB i=blocInstruction* FIN {(d,i) } 
+  d=declarations* DEB i=instruction* FIN {(d,i) } 
 
 declarations:
   VAR id=IDENT  { id }
@@ -27,10 +27,10 @@ instruction:
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
 
+/*
 blocInstruction:
-  i = instruction  b=blocInstruction { i::b }
-  | {[]}
-
+   i = instruction  b=blocInstruction { i::b }
+  | {[]}  */
 expression:
   n = NB    {Nombre n}
   | id = IDENT { Var id }

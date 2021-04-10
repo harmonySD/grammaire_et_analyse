@@ -1,3 +1,3 @@
 exception Error of string
 
-val check_program: Ast.programme -> unit 
+val check_program: Ast.programme -> unit

@@ -4,7 +4,7 @@ let ast = Parser.s Lexer.main lexbuf
 
 let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast)
 (* programme principal *)
-
+(*
 let print_position outx lexbuf =
   Lexing.(
     let pos = lexbuf.lex_curr_p in
@@ -13,11 +13,10 @@ let print_position outx lexbuf =
       (pos.pos_cnum - pos.pos_bol + 1)
   )
    
-
  let _ = 
   let lb = Lexing.from_channel stdin in
   Lexer.main lb
-  
+  *)
   (*
 let _ =
   let lb = Lexing.from_channel stdin
