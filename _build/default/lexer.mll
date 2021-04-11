@@ -1,6 +1,5 @@
 {
   open Parser
-  exception Error of string
 }
 let espace =[' ' '\t' '\n']
 let ident_char =['a'-'z']
