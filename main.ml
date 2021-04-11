@@ -20,7 +20,7 @@ let _ =
   try
     let ast =
       Parser.s Lexer.main lb
-    in Typecheck.check_program ast; print_string "OK.\n"
+    in Typecheck.check_program ast; print_string "OK.\n"; Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast)
   with
   | Lexer.Error msg ->
      Printf.fprintf stderr "%a: Lexer error reading %s\n" print_position lb msg;
