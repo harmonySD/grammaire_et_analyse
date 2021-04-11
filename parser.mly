@@ -26,9 +26,6 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-/* 
-blocInstruction:
-  i = instruction  b=blocInstruction { i::b } */
 
 
 expression:

@@ -23,7 +23,7 @@ let rec check_instruction decs = function
   | Egal (s,e) ->  (try 
                     if List.mem s decs = type_expression decs e
                     then ()
-                    else raise (Error ("jjdjrdjjso<"))
+                    else raise (Error ("not declared "^s))
                 with Not_found ->
                   raise (Error ("not declared "^s)))
   
