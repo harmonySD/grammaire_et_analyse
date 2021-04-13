@@ -43,7 +43,7 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
-  | Ite(e,i,i2) -> "("^"If "(as_string e )^" then "(as_string_instruction2 i) ^" else "^(as_string_instruction2 (i2))^")"
+  | Ite(e,i,i2) -> "("^"If "^(as_string e )^" then "^(as_string_instruction2 i) ^" else "^(as_string_instruction2 (i2))^")"
 
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
