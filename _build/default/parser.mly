@@ -9,15 +9,16 @@ open Ast
 %right PLUS
 %right MOINS
 
-%start <Ast.programme> programme 
+%start <Ast.programme> s 
 %%
 
+s: p=programme EOF {p}
+
 programme:
-  d=declarations i=instruction EOF { Prog (d,i) }
+  d=declarations* DEB i=instruction* FIN {(d,i) } 
 
 declarations:
-  VAR id=IDENT  listdec=declarations{ id::listdec }
-  | {[]} 
+  VAR id=IDENT  { id }
 
 instruction:
   AVANCE e=expression { Avance e }
@@ -25,15 +26,11 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-  | DEB b=blocInstruction FIN { Debut b }
 
-blocInstruction:
-  i = instruction  b=blocInstruction { i::b }
-  | {[]}
 
 expression:
   n = NB    {Nombre n}
-  | id = IDENT { Var id }
+  | id = IDENT { Ident id }
   | e1 = expression PLUS e2 = expression    {Plus (e1,e2)}
   | e1 = expression MOINS e2 = expression   {Moins (e1,e2)}
   | LPAR e=expression RPAR { e }

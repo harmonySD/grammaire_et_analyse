@@ -2,6 +2,10 @@
 module Ast = Dune__exe__Ast
 
 
+(** @canonical Dune__exe.Interpreter *)
+module Interpreter = Dune__exe__Interpreter
+
+
 (** @canonical Dune__exe.Lexer *)
 module Lexer = Dune__exe__Lexer
 
