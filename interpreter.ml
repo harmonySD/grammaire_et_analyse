@@ -26,38 +26,41 @@ let rec get_values (expr : Ast.expression) (env : (string * int) list): int =
   | Moins (e1,e2) -> (get_values e1 env) - (get_values e2 env)
   | Nombre i -> i 
 
-let draw (env : (string * int) list) (instruct : Ast.instruction) : unit =
+let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * int) list =
   match instruct with
   | Avance e ->
     let tmp = get_values e env in
     let (x,y) = nextPos tmp in
-    print_int x;
-    print_int y;
-    lineto x y 
-  | Tourne e -> angle := !angle + (get_values e env)
-  | Egal (s,e) -> ignore ((s,(get_values e env))::env)
-  | BasPinceau -> pinceau := true
-  | HautPinceau -> pinceau := false
+    lineto x y;
+    env 
+  | Tourne e -> angle := !angle + (get_values e env); env
+  | Egal (s,e) -> (s,(get_values e env))::env
+  | BasPinceau -> pinceau := true; env
+  | HautPinceau -> pinceau := false; env
 
 let init (ast : Ast.programme) : unit =
+  let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast) in
   let (_,instruct) = ast in
   open_graph " 500x500";
 
   print_int (List.length instruct);
   print_string "on est là\n";
+  print_newline();
 
-  let nextLine (instruct : Ast.instruction list) = 
-    let ev = wait_next_event [Key_pressed] in
-    if ev.key == 'q' then raise Quit;
-    begin
-      print_string "cas 1";
-      List.iter (draw []) instruct
-    end 
+  let nextLine (instruct : Ast.instruction list) =  
+    (* let ev = wait_next_event [Key_pressed] in
+    if ev.keypressed then raise Quit;
+    *)
+    print_string "cas 1";
+    print_newline();
+    lineto 100 100;
+    (* fold left a mettre *) 
   in 
 
   print_string "cas 0";
+  print_newline();
   try nextLine instruct
-  with Quit -> close_graph();
+  with _ -> close_graph()
  (*
   let rec boucle (ax : symbol word) =
     let ev = wait_next_event [Key_pressed] in
