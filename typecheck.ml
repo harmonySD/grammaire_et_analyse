@@ -32,6 +32,7 @@ let rec check_instruction decs = function
   | BasPinceau -> ()
   | HautPinceau -> ()
   | Ite(_,_,_) -> ()
+  | While(_,_) -> ()
               
 and check_instructions decs il =
   List.iter
