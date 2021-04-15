@@ -72,7 +72,6 @@ let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
   open_graph " 500x500";
 
-  moveto 100 100;
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
   let ev = wait_next_event [Key_pressed] in
