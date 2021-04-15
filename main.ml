@@ -23,6 +23,9 @@ let _ =
     in Typecheck.check_program ast; print_string "Typecheck OK.\n";
     Interpreter.init ast; print_string "Interpreter OK.\n"
   with
+  | Interpreter.Error msg ->
+     Printf.fprintf stderr "%a: Interpreter error drawing %s\n" print_position lb msg;
+     exit (-1)
   | Lexer.Error msg ->
      Printf.fprintf stderr "%a: Lexer error reading %s\n" print_position lb msg;
      exit (-1)
