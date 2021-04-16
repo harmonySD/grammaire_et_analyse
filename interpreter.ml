@@ -25,7 +25,7 @@ let rec myprint (l:(string * int) list) =
 let nextPos (v : int) (env : (string * int) list) =
   let (currX,currY) = current_point ()
   and pi = 3.1415926535 
-  and rot = modulo ((List.assoc "rot" env) + 90) 360 in
+  and rot = modulo ((List.assoc "rot" env) +90) 360 in
 
   let a = (of_int currX) +. (of_int v) *. cos (of_int rot *. (pi /. 180.)) 
   and b = (of_int currY) +. (of_int v) *. sin (of_int rot *. (pi /. 180.)) in
@@ -57,7 +57,12 @@ let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * in
         env
       end
     else 
-      env
+      begin
+        let tmp =get_values e env in
+        let (x,y) = nextPos tmp env in
+        moveto x y;
+        env
+      end
   | Tourne e ->
     let rot = List.assoc "rot" env 
     and angle = (get_values e env) in
@@ -72,6 +77,7 @@ let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
   open_graph " 500x500";
 
+(*   moveto 100 100; *)
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
   let ev = wait_next_event [Key_pressed] in
