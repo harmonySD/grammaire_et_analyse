@@ -1,0 +1,16 @@
+Var angle;
+Debut
+angle = 0-90;
+If 7 ;
+Then Tourne angle;
+Else Avance 100;
+BasPinceau;
+Avance 100;
+While 6 Do Tourne angle;
+Tourne angle;
+Avance 100;
+Tourne angle;
+Avance 100;
+Tourne angle;
+Avance 100;
+Fin
