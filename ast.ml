@@ -2,7 +2,7 @@
 type expression = 
   | Ident of string
   | Plus of expression * expression
-  | Moins of expression *expression
+  | Moins of expression * expression
   | Nombre of int
 
 type instruction =
