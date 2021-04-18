@@ -31,6 +31,8 @@ let rec check_instruction decs = function
   | Tourne _ -> ()
   | BasPinceau -> ()
   | HautPinceau -> ()
+  | Ite(_,_,_) -> ()
+  | While(_,_) -> ()
               
 and check_instructions decs il =
   List.iter
