@@ -20,6 +20,11 @@ rule main = parse
   | "Tourne"        {TOURNE}
   | "Avance"        {AVANCE}
   | "="             {EGAL}
+  | "If"            {IF}
+  | "Then"          {THEN}
+  | "Else"          {ELSE}
+  | "While"          {WHILE}
+  | "Do"             {DO}
   | ident_char+ as i    {IDENT i}
   | nb+ as n             {NB (int_of_string n)}
   | eof              {EOF}

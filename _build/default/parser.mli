@@ -2,18 +2,23 @@
 (* The type of tokens. *)
 
 type token = 
+  | WHILE
   | VAR
   | TOURNE
+  | THEN
   | RPAR
   | PLUS
   | NB of (int)
   | MOINS
   | LPAR
+  | IF
   | IDENT of (string)
   | HPINCEAU
   | FIN
   | EOF
+  | ELSE
   | EGAL
+  | DO
   | DEB
   | BPINCEAU
   | AVANCE
