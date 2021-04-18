@@ -3,6 +3,9 @@ type expression =
   | Ident of string
   | Plus of expression * expression
   | Moins of expression * expression
+  | Mult of expression * expression
+  | Div of expression * expression
+  | Mun of int
   | Nombre of int
 
 type instruction =
@@ -29,6 +32,9 @@ let rec as_string = function
   | Nombre n -> string_of_int n
   | Plus (l,r) -> as_string1 "+" l r
   | Moins (l,r) -> as_string1 "-" l r
+  | Mult (l,r) -> as_string1 "*" l r
+  | Div (l,r) -> as_string1 "/" l r
+  | Mun n -> "(" ^ "-" ^ string_of_int n ^")"
 
 and as_string1 op l r =
   "("^ as_string l ^ op ^ as_string r ^ ")"

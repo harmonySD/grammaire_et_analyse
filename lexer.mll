@@ -12,6 +12,8 @@ rule main = parse
   | "Fin"           {FIN}
   | "+"             {PLUS}
   | "-"             {MOINS}
+  | "*"             {MULT}
+  | "/"             {DIV}
   | "Var"           {VAR}
   | "("             {LPAR}
   | ")"             {RPAR}
