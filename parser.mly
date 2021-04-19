@@ -2,12 +2,18 @@
 open Ast
 %}
 
-%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE HPINCEAU BPINCEAU EOF LPAR RPAR IF THEN ELSE WHILE DO
+%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE 
+%token HPINCEAU BPINCEAU EOF LPAR RPAR IF THEN ELSE
+%token WHILE DO MULT DIV 
 %token <int> NB
 %token <string> IDENT
 
-%right PLUS
-%right MOINS
+%left PLUS
+%left MOINS
+%left MULT
+%left DIV
+
+
 
 %start <Ast.programme> s 
 %%
@@ -31,8 +37,11 @@ instruction:
 
 
 expression:
-  n = NB    {Nombre n}
+  | n = NB    {Nombre n}
   | id = IDENT { Ident id }
   | e1 = expression PLUS e2 = expression    {Plus (e1,e2)}
   | e1 = expression MOINS e2 = expression   {Moins (e1,e2)}
+  | MOINS n= NB     {Mun n}
+  | e1 = expression MULT e2 = expression    {Mult (e1,e2)}
+  | e1 = expression DIV e2 = expression    {Div (e1,e2)}
   | LPAR e=expression RPAR { e }
