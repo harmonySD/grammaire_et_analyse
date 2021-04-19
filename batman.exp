@@ -4,6 +4,7 @@ Debut
 
 angle =0;
 
+While angle - angle Do Avance 10;
 Tourne 0-45;
 HautPinceau;
 Avance 100;

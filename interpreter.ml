@@ -46,7 +46,7 @@ let rec get_values (expr : Ast.expression) (env : (string * int) list): int =
 
 (*FIN FONCTIONS AUX*)
 
-let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * int) list =
+let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string * int) list =
   match instruct with
   | Avance e ->
     if (List.assoc "pinceau" env) = 1 then 
@@ -72,6 +72,19 @@ let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * in
   | BasPinceau -> ("pinceau",1)::(List.remove_assoc "pinceau" (List.rev env))
   | HautPinceau ->
     ("pinceau",0)::(List.remove_assoc "pinceau" (List.rev env))
+  | Ite(e,i1,i2) -> 
+    if (get_values e env) != 0 then
+      draw env i1
+    else
+      draw env i2
+  | While(e,i) ->
+    let a = ref env in
+    while (get_values e env) != 0 
+    do 
+      ignore(draw !a i)
+    done;
+    !a
+
 
 let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
