@@ -1,12 +1,9 @@
 Var angle;
+Var blop;
 Debut
-angle = 0-90;
-If 7 ;
-Then Tourne angle;
-Else Avance 100;
+angle = 1+3*-5;
 BasPinceau;
 Avance 100;
-While 6 Do Tourne angle;
 Tourne angle;
 Avance 100;
 Tourne angle;
