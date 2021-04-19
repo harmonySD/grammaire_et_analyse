@@ -42,7 +42,16 @@ let rec get_values (expr : Ast.expression) (env : (string * int) list): int =
   | Ident s -> List.assoc s env 
   | Plus (e1,e2) -> (get_values e1 env) + (get_values e2 env)
   | Moins (e1,e2) -> (get_values e1 env) - (get_values e2 env)
-  | Nombre i -> i 
+  | Nombre i -> i
+  | Mult (e1,e2) -> (get_values e1 env) * (get_values e2 env)
+  | Div (e1,e2) ->
+    let ve2 = (get_values e2 env) in 
+    if ve2 = 0 then 
+      raise(Error("Division par 0 interdite"))
+    else
+      (get_values e1 env) / ve2
+  | Mun i -> - i 
+
 
 (*FIN FONCTIONS AUX*)
 
@@ -90,7 +99,7 @@ let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
   open_graph " 500x500";
 
-(*   moveto 100 100; *)
+  moveto 100 100;
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
   let ev = wait_next_event [Key_pressed] in
