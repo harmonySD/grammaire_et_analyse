@@ -42,11 +42,20 @@ let rec get_values (expr : Ast.expression) (env : (string * int) list): int =
   | Ident s -> List.assoc s env 
   | Plus (e1,e2) -> (get_values e1 env) + (get_values e2 env)
   | Moins (e1,e2) -> (get_values e1 env) - (get_values e2 env)
-  | Nombre i -> i 
+  | Nombre i -> i
+  | Mult (e1,e2) -> (get_values e1 env) * (get_values e2 env)
+  | Div (e1,e2) ->
+    let ve2 = (get_values e2 env) in 
+    if ve2 = 0 then 
+      raise(Error("Division par 0 interdite"))
+    else
+      (get_values e1 env) / ve2
+  | Mun i -> - i 
+
 
 (*FIN FONCTIONS AUX*)
 
-let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * int) list =
+let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string * int) list =
   match instruct with
   | Avance e ->
     if (List.assoc "pinceau" env) = 1 then 
@@ -72,12 +81,25 @@ let draw (env : (string * int) list) (instruct : Ast.instruction) : (string * in
   | BasPinceau -> ("pinceau",1)::(List.remove_assoc "pinceau" (List.rev env))
   | HautPinceau ->
     ("pinceau",0)::(List.remove_assoc "pinceau" (List.rev env))
+  | Ite(e,i1,i2) -> 
+    if (get_values e env) != 0 then
+      draw env i1
+    else
+      draw env i2
+  | While(e,i) ->
+    let a = ref env in
+    while (get_values e env) != 0 
+    do 
+      ignore(draw !a i)
+    done;
+    !a
+
 
 let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
   open_graph " 500x500";
 
-(*   moveto 100 100; *)
+  moveto 100 100;
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
   let ev = wait_next_event [Key_pressed] in

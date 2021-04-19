@@ -9,7 +9,7 @@ let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast)
   let print_position outx lexbuf =
   Lexing.(
     let pos = lexbuf.lex_curr_p in
-    Printf.fprintf outx "Ligne %d Col %d"
+    Printf.fprintf outx "Ligne %d Column %d"
       pos.pos_lnum
       (pos.pos_cnum - pos.pos_bol + 1)
   )
@@ -23,6 +23,9 @@ let _ =
     in Typecheck.check_program ast; print_string "Typecheck OK.\n";
     Interpreter.init ast; print_string "Interpreter OK.\n"
   with
+  | Interpreter.Error msg ->
+     Printf.fprintf stderr "%a: Interpreter error drawing %s\n" print_position lb msg;
+     exit (-1)
   | Lexer.Error msg ->
      Printf.fprintf stderr "%a: Lexer error reading %s\n" print_position lb msg;
      exit (-1)
