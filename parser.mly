@@ -28,6 +28,7 @@ declarations:
 
 instruction:
   AVANCE e=expression { Avance e }
+  | DEB i=instruction* FIN  {Bloc(i)}
   | TOURNE e=expression { Tourne e }
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }

@@ -9,13 +9,14 @@ type expression =
   | Nombre of int
 
 type instruction =
+  | Bloc of instruction list
   | Avance of expression
   | Tourne of expression
   | Egal of string * expression
   | BasPinceau
   | HautPinceau
   | Ite of expression * instruction * instruction
-  | While of expression * instruction 
+  | While of expression * instruction
 
 
 type declaration = string
@@ -41,19 +42,21 @@ and as_string1 op l r =
 
 let rec as_string_instruction l = 
   match l with 
-  |[] -> "Fin"
+  |[] -> ""
   |x::y-> as_string_instruction2 x ^as_string_instruction y
-
 and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
-  | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then "^(as_string_instruction2 i) ^" else "^(as_string_instruction2 (i2))^")"
-  | While (e,i) -> "("^"While "^(as_string e)^" then "^(as_string_instruction2 i)^")"
+  | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
+  | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
+  | Bloc ins -> match ins with
+                      |[]-> ""
+                      |x::y-> as_string_instruction2 x ^as_string_instruction y
 
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in
-  "["^as_string_decla decla^ "; Debut" ^as_string_instruction instruc^"]"
+  "["^as_string_decla decla^ "; Debut" ^as_string_instruction instruc^" Fin]"
