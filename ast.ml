@@ -54,9 +54,9 @@ and as_string_instruction2 = function
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
   | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
-  | Bloc ins -> match ins with
+  | Bloc ins -> (match ins with
                       |[]-> ""
-                      |x::y-> as_string_instruction2 x ^as_string_instruction y
+                      |x::y-> as_string_instruction2 x ^as_string_instruction y)
   | Color (r,g,b) -> "( " ^ "Color : " ^ "R : " ^ (as_string r) ^ "G : " ^ (as_string g) ^ "B : " ^ (as_string b) ^ ")"
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
