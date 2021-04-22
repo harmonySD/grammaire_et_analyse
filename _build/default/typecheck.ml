@@ -17,6 +17,9 @@ let type_expression decs = function
 
   | Plus _-> true
   | Moins _-> true
+  | Mult _-> true
+  | Div _ ->true
+  | Mun _-> true
 
 
 let rec check_instruction decs = function
@@ -33,6 +36,7 @@ let rec check_instruction decs = function
   | HautPinceau -> ()
   | Ite(_,_,_) -> ()
   | While(_,_) -> ()
+  | Bloc _ -> ()
               
 and check_instructions decs il =
   List.iter

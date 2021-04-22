@@ -1,9 +1,9 @@
-(*let lexbuf = Lexing.from_channel stdin 
+(* let lexbuf = Lexing.from_channel stdin 
 
 let ast = Parser.s Lexer.main lexbuf 
 
-let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast)
-*)
+let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast);Typecheck.check_program ast *)
+
 (* programme principal *)
 
   let print_position outx lexbuf =
@@ -34,4 +34,4 @@ let _ =
      exit (-1)
   | Typecheck.Error s ->
      Printf.fprintf stderr "Type error: %s\n" s;
-     exit (-1)
+     exit (-1) 
