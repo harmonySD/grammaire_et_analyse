@@ -1,14 +1,25 @@
 Var angle;
-Var blop;
+Var index;
 Debut
-angle = -5;
+index = 4;
+angle = -90;
+
+While index Do
+
+Debut
+
 BasPinceau;
 Avance 100;
 Tourne angle;
 Avance 100;
 Tourne angle;
-If angle -2 Then Debut Avance 4; Tourne angle Fin Else Avance 40 ;
 Avance 100;
 Tourne angle;
 Avance 100;
+index = index -1;
+Tourne angle;
+Avance 100;
+
+Fin;
+
 Fin

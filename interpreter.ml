@@ -77,7 +77,10 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
     and angle = (get_values e env) in
     ("rot",(modulo (rot + angle) 360))::(List.remove_assoc "rot" (List.rev env))
   | Egal (s,e) ->
-    (s,(get_values e env))::env
+
+    let a = List.remove_assoc s (List.rev env) in
+    (s,(get_values e env))::a
+
   | BasPinceau -> ("pinceau",1)::(List.remove_assoc "pinceau" (List.rev env))
   | HautPinceau ->
     ("pinceau",0)::(List.remove_assoc "pinceau" (List.rev env))
@@ -88,18 +91,20 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
       draw env i2
   | While(e,i) ->
     let a = ref env in
-    while (get_values e env) != 0 
+
+    while (get_values e !a) != 0 
     do 
-      ignore(draw !a i)
+      a := (draw !a i);
     done;
+    
     !a
+  | Bloc b -> List.fold_left draw env b
 
 
 let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
-  open_graph " 500x500";
+  open_graph " 2000x2000";
 
-  moveto 100 100;
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
   let ev = wait_next_event [Key_pressed] in
