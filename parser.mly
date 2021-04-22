@@ -13,6 +13,9 @@ open Ast
 %left MULT
 %left DIV
 
+%left THEN
+%left ELSE
+
 
 
 %start <Ast.programme> s 
@@ -33,8 +36,9 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-  | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
+
   | IF e=expression THEN i=instruction {Sialors(e,i)}
+  | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
   | WHILE e=expression DO i=instruction   {While(e,i)}
 
 
