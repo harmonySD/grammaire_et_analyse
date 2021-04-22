@@ -34,6 +34,7 @@ instruction:
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
   | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
+  | IF e=expression THEN i=instruction {Sialors(e,i)}
   | WHILE e=expression DO i=instruction   {While(e,i)}
 
 

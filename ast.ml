@@ -16,6 +16,7 @@ type instruction =
   | BasPinceau
   | HautPinceau
   | Ite of expression * instruction * instruction
+  | Sialors of expression * instruction
   | While of expression * instruction
 
 
@@ -50,6 +51,7 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
+  | Sialors (e,i) -> "( If"^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Bloc ins -> match ins with

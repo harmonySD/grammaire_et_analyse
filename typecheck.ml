@@ -34,6 +34,7 @@ let rec check_instruction decs = function
   | Tourne _ -> ()
   | BasPinceau -> ()
   | HautPinceau -> ()
+  | Sialors(_,_)-> ()
   | Ite(_,_,_) -> ()
   | While(_,_) -> ()
   | Bloc _ -> ()

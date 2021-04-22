@@ -84,6 +84,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
   | BasPinceau -> ("pinceau",1)::(List.remove_assoc "pinceau" (List.rev env))
   | HautPinceau ->
     ("pinceau",0)::(List.remove_assoc "pinceau" (List.rev env))
+  | Sialors (e,i) -> if (get_values e env) !=0 then draw env i  else env
   | Ite(e,i1,i2) -> 
     if (get_values e env) != 0 then
       draw env i1
@@ -103,7 +104,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
 
 let init (ast : Ast.programme) : unit =
   let (_,instruct) = ast in
-  open_graph " 2000x2000";
+  open_graph " 500x500";
 
   ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
