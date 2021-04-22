@@ -67,7 +67,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
       end
     else 
       begin
-        let tmp =get_values e env in
+        let tmp = get_values e env in
         let (x,y) = nextPos tmp env in
         moveto x y;
         env
@@ -99,6 +99,9 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
     
     !a
   | Bloc b -> List.fold_left draw env b
+  | Color (r,g,b) ->
+    let _ = set_color (rgb r g b) in
+    env
 
 
 let init (ast : Ast.programme) : unit =

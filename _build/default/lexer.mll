@@ -10,8 +10,11 @@ rule main = parse
   | espace|";"        {main lexbuf}
   | "Debut"         {DEB}
   | "Fin"           {FIN}
+  | "Color"         {COLOR}
   | "+"             {PLUS}
   | "-"             {MOINS}
+  | "*"             {MULT}
+  | "/"             {DIV}
   | "Var"           {VAR}
   | "("             {LPAR}
   | ")"             {RPAR}

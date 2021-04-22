@@ -17,6 +17,7 @@ type instruction =
   | HautPinceau
   | Ite of expression * instruction * instruction
   | While of expression * instruction
+  | Color of int * int * int
 
 
 type declaration = string
@@ -44,7 +45,8 @@ let rec as_string_instruction l =
   match l with 
   |[] -> ""
   |x::y-> as_string_instruction2 x ^as_string_instruction y
-and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
+
+and as_string_instruction2 = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
@@ -52,10 +54,10 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
   | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
-  | Bloc ins -> match ins with
+  | Bloc ins -> (match ins with
                       |[]-> ""
-                      |x::y-> as_string_instruction2 x ^as_string_instruction y
-
+                      |x::y-> as_string_instruction2 x ^as_string_instruction y)
+  | Color (r,g,b) -> "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in
