@@ -37,6 +37,7 @@ let rec check_instruction decs = function
   | Ite(_,_,_) -> ()
   | While(_,_) -> ()
   | Bloc _ -> ()
+  | Color (_,_,_) -> ()
               
 and check_instructions decs il =
   List.iter

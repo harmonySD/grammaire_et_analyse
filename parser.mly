@@ -13,8 +13,6 @@ open Ast
 %left MULT
 %left DIV
 
-
-
 %start <Ast.programme> s 
 %%
 
@@ -35,7 +33,7 @@ instruction:
   | id=IDENT EGAL e=expression { Egal(id,e) }
   | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
   | WHILE e=expression DO i=instruction   {While(e,i)}
-  | COLOR LPAR r=NB g=NB b=NB RPAR {Color(r,g,b)}
+  | COLOR r=NB g=NB b=NB {Color(r,g,b)}
 
 
 expression:

@@ -17,7 +17,7 @@ type instruction =
   | HautPinceau
   | Ite of expression * instruction * instruction
   | While of expression * instruction
-  | Color of expression * expression * expression
+  | Color of int * int * int
 
 
 type declaration = string
@@ -57,7 +57,7 @@ and as_string_instruction2 = function
   | Bloc ins -> (match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y)
-  | Color (r,g,b) -> "( " ^ "Color : " ^ "R : " ^ (as_string r) ^ "G : " ^ (as_string g) ^ "B : " ^ (as_string b) ^ ")"
+  | Color (r,g,b) -> "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in
