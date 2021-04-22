@@ -58,5 +58,5 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
 
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
-  let (decla,instruc) =prog in
+  let (decla,instruc) = prog in
   "["^as_string_decla decla^ "; Debut" ^as_string_instruction instruc^" Fin]"

@@ -67,7 +67,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
       end
     else 
       begin
-        let tmp =get_values e env in
+        let tmp = get_values e env in
         let (x,y) = nextPos tmp env in
         moveto x y;
         env
@@ -96,7 +96,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
     do 
       a := (draw !a i);
     done;
-    
+
     !a
   | Bloc b -> List.fold_left draw env b
 
