@@ -62,7 +62,7 @@ and as_string_instruction2 = function
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Bloc ins -> (match ins with
                       |[]-> ""
-                      |x::y-> as_string_instruction2 x ^as_string_instruction y
+                      |x::y-> as_string_instruction2 x ^as_string_instruction y)
   
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
