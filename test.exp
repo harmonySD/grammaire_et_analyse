@@ -10,6 +10,7 @@ Tourne angle;
 If angle -5 Then Avance 40;
 Avance 100;
 Tourne angle;
+Color 255 230 74;
 Avance 100;
 Tourne angle;
 Avance 100;

@@ -47,7 +47,8 @@ let rec as_string_instruction l =
   match l with 
   |[] -> ""
   |x::y-> as_string_instruction2 x ^as_string_instruction y
-and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
+
+and as_string_instruction2 = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Epaisseur t -> "(Epaisseur : "^string_of_int t ^")"
@@ -59,7 +60,7 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Sialors (e,i) -> "( If"^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
-  | Bloc ins -> match ins with
+  | Bloc ins -> (match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y
   

@@ -1,16 +1,25 @@
 Var angle;
+Var index;
 Debut
-angle = 0-90;
-If 7 ;
-Then Tourne angle;
-Else Avance 100;
+index = 4;
+angle = -90;
+
+While index Do
+
+Debut
+
 BasPinceau;
 Avance 100;
-While 6 Do Tourne angle;
 Tourne angle;
 Avance 100;
 Tourne angle;
 Avance 100;
 Tourne angle;
 Avance 100;
+index = index -1;
+Tourne angle;
+Avance 100;
+
+Fin;
+
 Fin
