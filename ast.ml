@@ -19,6 +19,7 @@ type instruction =
   | Sialors of expression * instruction
   | While of expression * instruction
   | Epaisseur of int
+  | Color of int * int * int
 
 
 type declaration = string
@@ -50,6 +51,8 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Epaisseur t -> "(Epaisseur : "^string_of_int t ^")"
+  | Color (r,g,b) ->  "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " 
+                        ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"

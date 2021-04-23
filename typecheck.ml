@@ -39,6 +39,7 @@ let rec check_instruction decs = function
   | While(_,_) -> ()
   | Bloc _ -> ()
   | Epaisseur _ -> ()
+  | Color _ -> ()
               
 and check_instructions decs il =
   List.iter
