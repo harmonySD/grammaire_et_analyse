@@ -42,10 +42,22 @@ let rec check_instruction decs = function
     else raise (Error ("Tourne arg is not a reconized expression"))
   | BasPinceau -> ()
   | HautPinceau -> ()
-  | Ite(_,_,_) -> ()
-  | While(_,_) -> ()
-  | Bloc _ -> ()
-  | Color (_,_,_) -> ()
+  | Ite(e,i1,i2) ->
+    if (type_expression decs e) = 1
+    then
+      let _ = check_instruction decs i1 
+      and _ = check_instruction decs i2 in
+      ()
+    else
+      raise (Error("e n'est pas une condition booléenne")) 
+  | While(e,i) -> if (type_expression decs e) = 1  
+    then check_instruction decs i
+    else raise (Error("While arg is not reconized"))
+  | Bloc b -> check_instructions decs b
+  | Color (r,g,b) -> 
+    if r >= 256 || r < 0 || g >= 256 && g < 0 || b >= 256 || b < 0 
+    then raise (Error("Erreur de type pour les couleurs"))
+    else ()
               
 and check_instructions decs il =
   List.iter
