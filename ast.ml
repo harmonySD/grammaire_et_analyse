@@ -49,6 +49,7 @@ let rec as_string_instruction l =
 and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
+  | Epaisseur t -> "(Epaisseur : "^string_of_int t ^")"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
@@ -58,7 +59,7 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Bloc ins -> match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y
-  | Epaisseur t -> "(Epaisseur : "^(string_of_int t)^")"
+  
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in

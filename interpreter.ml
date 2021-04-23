@@ -100,7 +100,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
     
     !a
   | Bloc b -> List.fold_left draw env b
-  | Epaisseur t -> set_line_width t
+  | Epaisseur t -> let _= set_line_width t in env
 
 
 let init (ast : Ast.programme) : unit =
