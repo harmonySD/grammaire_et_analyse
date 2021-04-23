@@ -18,6 +18,7 @@ type instruction =
   | Ite of expression * instruction * instruction
   | Sialors of expression * instruction
   | While of expression * instruction
+  | Epaisseur of int
 
 
 type declaration = string
@@ -57,7 +58,7 @@ and as_string_instruction2 = function  (*CHANGER SI INSTRUC LIST*)
   | Bloc ins -> match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y
-
+  | Epaisseur t -> "(Epaisseur : "^(string_of_int t)^")"
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in

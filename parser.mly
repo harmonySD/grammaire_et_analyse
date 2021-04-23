@@ -2,7 +2,7 @@
 open Ast
 %}
 
-%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE 
+%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE EP
 %token HPINCEAU BPINCEAU EOF LPAR RPAR IF THEN ELSE
 %token WHILE DO MULT DIV 
 %token <int> NB
@@ -36,11 +36,10 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-
   | IF e=expression THEN i=instruction {Sialors(e,i)}
   | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
   | WHILE e=expression DO i=instruction   {While(e,i)}
-
+  | EP t=NB   {Epaisseur(t)}
 
 expression:
   | n = NB    {Nombre n}

@@ -27,6 +27,7 @@ rule main = parse
   | "Else"          {ELSE}
   | "While"          {WHILE}
   | "Do"             {DO}
+  | "ChangeEpaisseur"   {EP}
   | ident_char+ as i    {IDENT i}
   | nb+ as n             {NB (int_of_string n)}
   | eof              {EOF}

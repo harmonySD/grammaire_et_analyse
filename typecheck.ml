@@ -38,6 +38,7 @@ let rec check_instruction decs = function
   | Ite(_,_,_) -> ()
   | While(_,_) -> ()
   | Bloc _ -> ()
+  | Epaisseur _ -> ()
               
 and check_instructions decs il =
   List.iter
