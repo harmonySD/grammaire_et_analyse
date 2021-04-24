@@ -34,10 +34,12 @@ let rec check_instruction decs = function
   | Tourne _ -> ()
   | BasPinceau -> ()
   | HautPinceau -> ()
+  | Sialors(_,_)-> ()
   | Ite(_,_,_) -> ()
   | While(_,_) -> ()
   | Bloc _ -> ()
-  | Color (_,_,_) -> ()
+  | Epaisseur _ -> ()
+  | Color _ -> ()
               
 and check_instructions decs il =
   List.iter

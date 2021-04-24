@@ -2,11 +2,12 @@ Var angle;
 
 Debut
 
+ChangeEpaisseur 3;
 angle =0;
-
-While angle - angle Do Avance 10;
+Color 255 230 74;
 Tourne 0-45;
 HautPinceau;
+
 Avance 100;
 BasPinceau;
 Tourne 45;
@@ -55,3 +56,4 @@ Avance 30;
 Tourne 0-70;
 Avance 40;
 Fin
+
