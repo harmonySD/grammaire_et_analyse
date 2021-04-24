@@ -2,9 +2,9 @@
 open Ast
 %}
 
-%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE COLOR EP
-%token HPINCEAU BPINCEAU EOF LPAR RPAR IF THEN ELSE
-%token WHILE DO MULT DIV 
+%token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE COUL EP
+%token HPINCEAU BPINCEAU EOF LPAR RPAR SI ALORS SINON
+%token TANTQ FAIR MULT DIV 
 %token <int> NB
 %token <string> IDENT
 
@@ -13,8 +13,8 @@ open Ast
 %left MULT
 %left DIV
 
-%left THEN
-%left ELSE
+%left ALORS
+%left SINON
 
 
 
@@ -36,10 +36,10 @@ instruction:
   | BPINCEAU { BasPinceau }
   | HPINCEAU { HautPinceau }
   | id=IDENT EGAL e=expression { Egal(id,e) }
-  | IF e=expression THEN i=instruction {Sialors(e,i)}
-  | IF e=expression THEN i=instruction ELSE i2=instruction {Ite(e,i,i2)} 
-  | WHILE e=expression DO i=instruction   {While(e,i)}
-  | COLOR r=NB g=NB b=NB  {Color(r,g,b)}
+  | SI e=expression ALORS i=instruction {Sialors(e,i)}
+  | SI e=expression ALORS i=instruction SINON i2=instruction {Sias(e,i,i2)} 
+  | TANTQ e=expression FAIR i=instruction   {Tantq(e,i)}
+  | COUL r=NB g=NB b=NB  {Couleur(r,g,b)}
   | EP t=NB  {Epaisseur t}
 
 expression:
