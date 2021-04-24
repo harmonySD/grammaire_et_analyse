@@ -16,7 +16,9 @@ type instruction =
   | BasPinceau
   | HautPinceau
   | Ite of expression * instruction * instruction
+  | Sialors of expression * instruction
   | While of expression * instruction
+  | Epaisseur of int
   | Color of int * int * int
 
 
@@ -49,15 +51,19 @@ let rec as_string_instruction l =
 and as_string_instruction2 = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
+  | Epaisseur t -> "(Epaisseur : "^string_of_int t ^")"
+  | Color (r,g,b) ->  "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " 
+                        ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
+  | Sialors (e,i) -> "( If"^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
   | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
   | Bloc ins -> (match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y)
-  | Color (r,g,b) -> "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
+  
 
  let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
   let (decla,instruc) =prog in
