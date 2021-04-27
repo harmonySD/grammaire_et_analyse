@@ -10,7 +10,7 @@ let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast);Typecheck.che
   let print_position outx lexbuf =
   Lexing.(
     let pos = lexbuf.lex_curr_p in
-    Printf.fprintf outx "Ligne %d Column %d"
+    Printf.fprintf outx "Ligne %d Colonne %d"
       pos.pos_lnum
       (pos.pos_cnum - pos.pos_bol + 1)
   )
@@ -31,7 +31,7 @@ let _ =
      Printf.fprintf stderr "%a: Lexer erreur lecture %s\n" print_position lb msg;
      exit (-1)
   | Parser.Error ->
-     Printf.fprintf stderr "%a: Erruer de syntaxe \n" print_position lb;
+     Printf.fprintf stderr "%a: Erreur de syntaxe \n" print_position lb;
      exit (-1)
   | Typecheck.Error s ->
      Printf.fprintf stderr "Erreur de type : %s\n" s;
