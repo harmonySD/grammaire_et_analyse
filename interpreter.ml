@@ -101,10 +101,13 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
 
 
 let init (ast : Ast.programme) : unit =
-  let (_,instruct) = ast in
-  open_graph " 500x500";
+  try
+    let (_,instruct) = ast in
+    open_graph " 500x500";
 
-  ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
+    ignore (List.fold_left draw [("rot",0);("pinceau",0)] instruct);
 
-  let ev = wait_next_event [Key_pressed] in
-  if ev.keypressed then close_graph()
+    let ev = wait_next_event [Key_pressed] in
+    if ev.keypressed then close_graph()
+    with 
+    | Graphic_failure("fatal I/O error")->();
