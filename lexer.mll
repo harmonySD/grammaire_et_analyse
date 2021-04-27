@@ -10,7 +10,7 @@ rule main = parse
   | espace|";"        {main lexbuf}
   | "Debut"         {DEB}
   | "Fin"           {FIN}
-  | "Color"         {COLOR}
+  | "Color"         {COUL}
   | "+"             {PLUS}
   | "-"             {MOINS}
   | "*"             {MULT}
@@ -23,12 +23,12 @@ rule main = parse
   | "Tourne"        {TOURNE}
   | "Avance"        {AVANCE}
   | "="             {EGAL}
-  | "If"            {IF}
-  | "Then"          {THEN}
-  | "Else"          {ELSE}
-  | "While"          {WHILE}
-  | "Do"             {DO}
-  | "Color"           {COLOR}
+  | "Si"            {SI}
+  | "Alors"          {ALORS}
+  | "Sinon"          {SINON}
+  | "Tant que"          {TANTQ}
+  | "Faire"             {FAIR}
+  | "ChangeCouleur"           {COUL}
   | "ChangeEpaisseur"   {EP}
   | ident_char+ as i    {IDENT i}
   | nb+ as n             {NB (int_of_string n)}

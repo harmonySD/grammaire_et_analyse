@@ -2,10 +2,6 @@ open Graphics
 open Float
 
 exception Quit;;
-
-(*A FAIRE*)
-(*GERER LES DEUX ERREURS DIV 0*)
-(*AJOUTER IF ET WHILE DE HARMONY*)
 exception Error of string
 
 (*FONCTIONS AUX *)
@@ -85,12 +81,12 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
   | HautPinceau ->
     ("pinceau",0)::(List.remove_assoc "pinceau" (List.rev env))
   | Sialors (e,i) -> if (get_values e env) !=0 then draw env i  else env
-  | Ite(e,i1,i2) -> 
+  | Sias(e,i1,i2) -> 
     if (get_values e env) != 0 then
       draw env i1
     else
       draw env i2
-  | While(e,i) ->
+  | Tantq(e,i) ->
     let a = ref env in
 
     while (get_values e !a) != 0 
@@ -100,7 +96,7 @@ let rec draw (env : (string * int) list) (instruct : Ast.instruction) : (string 
     
     !a
   | Bloc b -> List.fold_left draw env b
-  | Color (r,g,b)-> let _ =set_color (rgb r g b) in env
+  | Couleur (r,g,b)-> let _ =set_color (rgb r g b) in env
   | Epaisseur t -> let _= set_line_width t in env
 
 

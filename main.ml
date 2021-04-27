@@ -1,3 +1,4 @@
+(*Pour afficher l'arbre syntaxique decommenter la suite *)
 (* let lexbuf = Lexing.from_channel stdin 
 
 let ast = Parser.s Lexer.main lexbuf 

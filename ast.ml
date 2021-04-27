@@ -15,11 +15,11 @@ type instruction =
   | Egal of string * expression
   | BasPinceau
   | HautPinceau
-  | Ite of expression * instruction * instruction
+  | Sias of expression * instruction * instruction
   | Sialors of expression * instruction
-  | While of expression * instruction
+  | Tantq of expression * instruction
   | Epaisseur of int
-  | Color of int * int * int
+  | Couleur of int * int * int
 
 
 type declaration = string
@@ -52,19 +52,19 @@ and as_string_instruction2 = function
   | BasPinceau -> "BasPinceau"
   | HautPinceau -> "HautPinceau"
   | Epaisseur t -> "(Epaisseur : "^string_of_int t ^")"
-  | Color (r,g,b) ->  "( " ^ "Color : " ^ "R : " ^ (string_of_int r) ^ "G : " 
+  | Couleur (r,g,b) ->  "( " ^ "Couleur : " ^ "R : " ^ (string_of_int r) ^ "G : " 
                         ^ (string_of_int g) ^ "B : " ^ (string_of_int b) ^ ")"
   | Avance x -> "(" ^ "Avance " ^ as_string x ^")"
   | Tourne x ->  "(" ^ "Tourne " ^ as_string x ^")"
   | Egal (l,r) -> "(" ^ l ^ "=" ^ as_string r ^")"
-  | Sialors (e,i) -> "( If"^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
-  | Ite (e,i,i2) -> "("^"If "^(as_string e )^" then ["^(as_string_instruction2 i) ^"] else ["^(as_string_instruction2 (i2))^"] )"
-  | While (e,i) -> "("^"While "^(as_string e)^" then ["^(as_string_instruction2 i)^"] )"
+  | Sialors (e,i) -> "( Si"^(as_string e)^" Alors ["^(as_string_instruction2 i)^"] )"
+  | Sias (e,i,i2) -> "("^"Si "^(as_string e )^" Alors ["^(as_string_instruction2 i) ^"] Sinon ["^(as_string_instruction2 (i2))^"] )"
+  | Tantq (e,i) -> "("^"Tant que "^(as_string e)^" Faire ["^(as_string_instruction2 i)^"] )"
   | Bloc ins -> (match ins with
                       |[]-> ""
                       |x::y-> as_string_instruction2 x ^as_string_instruction y)
   
-
- let as_string_programme prog = (*CHANGER SI INSTRUC LIST*)
+(* Affiche l'arbre syntaxique du programme *)
+ let as_string_programme prog = 
   let (decla,instruc) =prog in
   "["^as_string_decla decla^ "; Debut" ^as_string_instruction instruc^" Fin]"

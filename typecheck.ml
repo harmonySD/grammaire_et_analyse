@@ -6,7 +6,7 @@ let rec get_declarations = function
   | [] -> []
   | v::r -> let rl = get_declarations r in 
                 if List.mem v rl
-                then raise (Error("Declared twice: "^v))
+                then raise (Error("Declarée deux fois : "^v))
                 else v::rl
 
 let rec type_expression decs = function
@@ -28,50 +28,50 @@ let rec check_instruction decs = function
     try 
       if List.mem s decs && (type_expression decs e) = 1
       then ()
-      else raise (Error ("not declared "^s))
+      else raise (Error ("Pas declarée "^s))
     with Not_found ->
-      raise (Error ("not declared "^s))
+      raise (Error ("Pas declarée "^s))
     )
   | Avance e -> 
     if (type_expression decs e) = 1 
     then ()
-    else raise (Error ("Avance arg is not a reconized expression")) 
+    else raise (Error ("Avance : argument n'est pas une expression reconnue")) 
   | Tourne e ->
     if (type_expression decs e) = 1 
     then ()
-    else raise (Error ("Tourne arg is not a reconized expression"))
+    else raise (Error ("Tourne : argument n'est pas une expression reconnue"))
   | BasPinceau -> ()
   | HautPinceau -> ()
-  | Ite(e,i1,i2) ->
+  | Sias(e,i1,i2) ->
     if (type_expression decs e) = 1
     then
       let _ = check_instruction decs i1 
       and _ = check_instruction decs i2 in
       ()
     else
-      raise (Error("e n'est pas une condition booléenne")) 
-  | While(e,i) -> if (type_expression decs e) = 1  
+      raise (Error("e n'est pas une condition booléenne(sialorssinon)")) 
+  | Tantq(e,i) -> if (type_expression decs e) = 1  
     then check_instruction decs i
-    else raise (Error("While arg is not reconized"))
+    else raise (Error("e n'est pas une condition booléenne (tantque)"))
   | Sialors (e,i) -> 
     if (type_expression decs e) = 1
     then 
       let _ = check_instruction decs i in ()
     else 
-      raise (Error("e n'est pas une condition booléenne"))
+      raise (Error("e n'est pas une condition booléenne(sialors)"))
   | Bloc b -> check_instructions decs b
-  | Color (r,g,b) -> 
+  | Couleur (r,g,b) -> 
     if r >= 256 || r < 0 || g >= 256 && g < 0 || b >= 256 || b < 0 
     then raise (Error("Erreur de type pour les couleurs"))
     else ()
-  | Epaisseur t -> if t < 0 then raise(Error("Erreur de type pour"))
+  | Epaisseur t -> if t < 0 then raise(Error("Erreur de type pour l'épaisseur"))
               
 and check_instructions decs il =
   List.iter
     (function i -> check_instruction decs i)
     il
-                    
-(* check the typing of a complete program *)
+
+(* Verification des types d'un programme complet *)
 let check_program (dl,il) =
   check_instructions (get_declarations dl) il
                     
