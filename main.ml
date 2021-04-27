@@ -25,14 +25,14 @@ let _ =
     Interpreter.init ast; print_string "Interpreter OK.\n"
   with
   | Interpreter.Error msg ->
-     Printf.fprintf stderr "%a: Interpreter error drawing %s\n" print_position lb msg;
+     Printf.fprintf stderr "%a: Interpreter erreur dessin %s\n" print_position lb msg;
      exit (-1)
   | Lexer.Error msg ->
-     Printf.fprintf stderr "%a: Lexer error reading %s\n" print_position lb msg;
+     Printf.fprintf stderr "%a: Lexer erreur lecture %s\n" print_position lb msg;
      exit (-1)
   | Parser.Error ->
-     Printf.fprintf stderr "%a: Syntax error\n" print_position lb;
+     Printf.fprintf stderr "%a: Erruer de syntaxe \n" print_position lb;
      exit (-1)
   | Typecheck.Error s ->
-     Printf.fprintf stderr "Type error: %s\n" s;
+     Printf.fprintf stderr "Erreur de type : %s\n" s;
      exit (-1) 
