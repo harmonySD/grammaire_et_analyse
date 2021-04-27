@@ -4,6 +4,8 @@
 }
 let espace =[' ' '\t' '\n']
 let ident_char =['a'-'z']
+let ident_char_suite =['a'-'z''A'-'Z''0'-'9']
+let nb_sauf_zero =['1'-'9']
 let nb =['0'-'9']
 
 rule main = parse
@@ -30,7 +32,7 @@ rule main = parse
   | "Faire"             {FAIR}
   | "ChangeCouleur"           {COUL}
   | "ChangeEpaisseur"   {EP}
-  | ident_char+ as i    {IDENT i}
-  | nb+ as n             {NB (int_of_string n)}
+  | ident_char ident_char_suite* as i    {IDENT i}
+  | nb_sauf_zero nb* | '0' as n             {NB (int_of_string n)}
   | eof              {EOF}
   | _             {failwith ("mot inconnu")}
