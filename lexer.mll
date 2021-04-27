@@ -29,7 +29,7 @@ rule main = parse
   | "Alors"          {ALORS}
   | "Sinon"          {SINON}
   | "Tant que"          {TANTQ}
-  | "Faire"             {FAIR}
+  | "Faire"             {FAIRE}
   | "ChangeCouleur"           {COUL}
   | "ChangeEpaisseur"   {EP}
   | ident_char ident_char_suite* as i    {IDENT i}

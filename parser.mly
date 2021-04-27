@@ -4,7 +4,7 @@ open Ast
 
 %token VAR DEB FIN EGAL PLUS MOINS TOURNE AVANCE COUL EP
 %token HPINCEAU BPINCEAU EOF LPAR RPAR SI ALORS SINON
-%token TANTQ FAIR MULT DIV 
+%token TANTQ FAIRE MULT DIV 
 %token <int> NB
 %token <string> IDENT
 
@@ -38,7 +38,7 @@ instruction:
   | id=IDENT EGAL e=expression { Egal(id,e) }
   | SI e=expression ALORS i=instruction {Sialors(e,i)}
   | SI e=expression ALORS i=instruction SINON i2=instruction {Sias(e,i,i2)} 
-  | TANTQ e=expression FAIR i=instruction   {Tantq(e,i)}
+  | TANTQ e=expression FAIRE i=instruction   {Tantq(e,i)}
   | COUL r=NB g=NB b=NB  {Couleur(r,g,b)}
   | EP t=NB  {Epaisseur t}
 
