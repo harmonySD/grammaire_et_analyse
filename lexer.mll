@@ -33,4 +33,4 @@ rule main = parse
   | ident_char+ as i    {IDENT i}
   | nb+ as n             {NB (int_of_string n)}
   | eof              {EOF}
-  | _               {failwith "unexpected character"}
+  | _             {failwith ("mot inconnu")}
