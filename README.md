@@ -1,6 +1,7 @@
 # ProjetGAL_Harmony_Clement
 ### Equipe
 Simon-Duchatel Harmony, n°etu: **71802495**
+
 Blérald Clément, n°etu: **71800092**
 ****
 ## Compilation
