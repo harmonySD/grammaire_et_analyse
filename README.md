@@ -1,15 +1,26 @@
 # ProjetGAL_Harmony_Clement
-
+### Equipe
+Simon-Duchatel Harmony, n°etu: **71802495**
+Blérald Clément, n°etu: **71800092**
+****
 ## Compilation
 
 ### Dans le dossier code
 
-- make pour compiler
-- make clean pour clean
+Pour compiler:
+
+```> make```
+
+Pour clean:
+
+```> make clean```
 
 ## Exécution
 
-- ./main.exe < fichier_test  (fichier_test contient les instructions en pseudo logo ex : batman, TestAngle)
+```>./main.exe < fichier_test ```
+
+*Avec fichier_test contient les instructions en pseudo logo ex : batman, TestAngle*
+****
 
 ## Répartition du travail
 
