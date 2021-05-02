@@ -35,6 +35,11 @@ Pour clean:
 - Etape 3 : sprint (aide au besoin via discord)
 - Etape 4 : retour à l'étape 1
 
+## Extensions
+
+- **Changer la couleur** , syntaxe : ChangeCouleur r g b (int avec 0 <= r,g,b <= 255)
+- **Changer l'espaisseur**, syntaxe : ChangeEpaisseur i (avec i:int)
+
 ## Architecture
 
 ```
