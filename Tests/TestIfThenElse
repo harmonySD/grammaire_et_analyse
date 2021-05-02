@@ -6,34 +6,32 @@ index = 3;
 
 Tant que index Faire
 
-Debut
+    Debut
 
-Si index - 3 Alors
+    Si index - 3 Alors
+        Debut
+        Si index - 2 Alors
+            ChangeCouleur 255 0 0
+        Sinon
+            ChangeCouleur 0 255 0
+        Fin
+    Sinon
+        ChangeCouleur 0 0 255;
+        
 
-ChangeCouleur 0 0 255;
+    BasPinceau;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
 
-Sinon
+    index = index - 1;
+    Tourne angle;
+    Avance 100;
 
-Debut
-Si index - 2  Alors
-ChangeCouleur 255 0 0
-Sinon
-ChangeCouleur 0 255 0
-Fin;
-
-BasPinceau;
-Avance 100;
-Tourne angle;
-Avance 100;
-Tourne angle;
-Avance 100;
-Tourne angle;
-Avance 100;
-
-index = index - 1;
-Tourne angle;
-Avance 100;
-
-Fin;
+    Fin
 
 Fin
