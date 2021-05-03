@@ -1,0 +1,23 @@
+Var i;
+Var j;
+Debut
+Tourne -90;
+Avance 250;
+Tourne 90;
+Avance 250;
+j= 20;
+Tant que j Faire
+Debut
+    i=180
+    Tant que i Faire
+        Debut
+            BasPinceau;     
+            Avance 1;
+            Tourne -2;
+            i = i -1;
+        Fin
+    Tourne -18;
+
+    j= j -1;
+Fin
+Fin
