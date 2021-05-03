@@ -4,7 +4,7 @@ Debut
 
 ChangeEpaisseur 3;
 angle =0;
-Color 255 230 74;
+ChangeCouleur 255 230 74;
 Tourne 0-45;
 HautPinceau;
 
