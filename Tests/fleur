@@ -1,0 +1,34 @@
+Var i;
+Var j;
+Debut
+i = 9
+j = 6
+BasPinceau;
+ChangeCouleur 149 184 74;
+Tourne -90;
+Avance 250;
+BasPinceau;
+ChangeEpaisseur 2;
+Tourne 90;
+Avance 150;
+HautPinceau;
+
+ChangeCouleur 160 70 74;
+ChangeEpaisseur 3;
+Tant que i Faire
+Debut
+    BasPinceau;
+    Tourne -30;
+    Avance 30;
+    Tourne 40;
+    Avance 20;
+    Tourne 130;
+    Avance 30;
+    Tourne 40;
+    Avance 20;
+    Tourne 20;
+    Avance 10;
+    i = i -1;
+Fin
+Fin
+
