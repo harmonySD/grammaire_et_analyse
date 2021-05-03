@@ -21,24 +21,26 @@ Pour clean:
 ```>./main.exe < fichier_test ```
 
 *Avec fichier_test contient les instructions en pseudo logo ex : batman, TestAngle*
+
+Pour afficher l'arbre de syntaxe abstraitre, decommenter la permiere partie du main.
 ****
 
 ## Répartition du travail
 
-- Clément : interpreter.ml, Typecheck.ml
-- Harmony : lexer.mll, parser.mly, ast.ml, Typecheck.ml
+- Clément : interpreter.ml, Typecheck.ml ( + gestion des erreurs), extension couleur
+- Harmony : lexer.mll, parser.mly ( + vérification LR(1)), ast.ml, Typecheck.ml, extension si alors, extension epaisseur
 
 ## Méthode de travail
 
 - Etape 1 : évaluations des tâches
 - Etape 2 : partages des tâches
-- Etape 3 : sprint (aide au besoin via discord)
+- Etape 3 : sprint (entre aide au besoin via discord)
 - Etape 4 : retour à l'étape 1
 
 ## Extensions
-
+- **Si alors**
 - **Changer la couleur** , syntaxe : ChangeCouleur r g b (int avec 0 <= r,g,b <= 255)
-- **Changer l'espaisseur**, syntaxe : ChangeEpaisseur i (avec i:int)
+- **Changer l'épaisseur**, syntaxe : ChangeEpaisseur i (avec i:int)
 
 ## Architecture
 
@@ -64,5 +66,9 @@ Pour clean:
     ├── TestH
     ├── TestParent
     ├── TestSyntErr
+    ├── fleur
+    ├── fleur2
+    ├── cercle
     └── TestVar
+    
 ```
