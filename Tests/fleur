@@ -1,8 +1,8 @@
 Var i;
 Var j;
 Debut
-i = 9
-j = 6
+i = 9;
+j = 6;
 BasPinceau;
 ChangeCouleur 149 184 74;
 Tourne -90;

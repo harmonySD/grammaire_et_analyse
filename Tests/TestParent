@@ -1,4 +1,4 @@
-Var angle
+Var angle;
 Debut
 angle = 0-90-90;
 BasPinceau;
