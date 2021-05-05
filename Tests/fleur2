@@ -10,10 +10,10 @@ j= 20;
 c=1;
 Tant que j Faire
 Debut
-    i=180
+    i=180;
     Tant que i Faire
         Debut
-            Si c Alors Debut ChangeCouleur 0 255 0; c = c-1;Fin Sinon Debut ChangeCouleur 255 0 0; c = 1 ; Fin
+            Si c Alors Debut ChangeCouleur 0 255 0; c = c-1; Fin Sinon Debut ChangeCouleur 255 0 0; c = 1 ; Fin
             BasPinceau;     
             Avance 4;
             Tourne -2;

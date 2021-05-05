@@ -11,9 +11,9 @@ Tant que index Faire
     Si index - 3 Alors
         Debut
         Si index - 2 Alors
-            ChangeCouleur 255 0 0
+            ChangeCouleur 255 0 0;
         Sinon
-            ChangeCouleur 0 255 0
+            ChangeCouleur 0 255 0;
         Fin
     Sinon
         ChangeCouleur 0 0 255;

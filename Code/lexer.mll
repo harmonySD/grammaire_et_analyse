@@ -9,7 +9,7 @@ let nb_sauf_zero =['1'-'9']
 let nb =['0'-'9']
 
 rule main = parse
-  | espace|";"        {main lexbuf}
+  | espace        {main lexbuf}
   | "Debut"         {DEB}
   | "Fin"           {FIN}
   | "+"             {PLUS}
@@ -19,6 +19,7 @@ rule main = parse
   | "Var"           {VAR}
   | "("             {LPAR}
   | ")"             {RPAR}
+  | ";"             {PV}
   | "HautPinceau"   {HPINCEAU}
   | "BasPinceau"    {BPINCEAU}
   | "Tourne"        {TOURNE}
