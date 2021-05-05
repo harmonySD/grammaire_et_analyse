@@ -9,10 +9,10 @@ Tant que index Faire
     Debut
 
     Si index - 3 Alors
-        ChangeCouleur 255 100 0
+        ChangeCouleur 255 100 0;
         
     Si index - 2 Alors
-        ChangeCouleur 100 40 250
+        ChangeCouleur 100 40 250;
         
     BasPinceau;
     Avance 100;
