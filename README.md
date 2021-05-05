@@ -44,31 +44,36 @@ Pour afficher l'arbre de syntaxe abstraitre, decommenter la permiere partie du m
 
 ## Architecture
 
-```
-
-├── code
-│   ├── ast.ml
-│   ├── dune
-│   ├── dune-project
-│   ├── interpreter.ml
-│   ├── lexer.mll
-│   ├── main.ml
-│   ├── Makefile
-│   ├── parser.mly
-│   └── typecheck.ml
+```Bash
+.
+├── Code
+│   ├── ast.ml
+│   ├── dune
+│   ├── dune-project
+│   ├── interpreter.ml
+│   ├── lexer.mll
+│   ├── main.ml
+│   ├── Makefile
+│   ├── parser.mly
+│   └── typecheck.ml
 ├── README.md
 └── Tests
     ├── batman
+    ├── cercle
+    ├── fleur
+    ├── fleur2
     ├── TestAngle
+    ├── TestAngleEtParent
     ├── TestBords
+    ├── TestCouleur
     ├── TestDiv0
     ├── TestEOF
     ├── TestH
+    ├── TestIfThen
+    ├── TestIfThenElse
     ├── TestParent
+    ├── TestPv
     ├── TestSyntErr
-    ├── fleur
-    ├── fleur2
-    ├── cercle
-    └── TestVar
-    
+    ├── TestVar
+    └── TestWhile    
 ```
