@@ -1,24 +1,25 @@
 Var angle;
 Var index;
 Debut
-angle = 0 - 90;
-index = 3;
+    angle = 0 - 90;
+    index = 3;
 
-Tant que index Faire
+    Tant que index Faire
 
-Debut 
-BasPinceau;
-Avance 100;
-Tourne angle;
-Avance 100;
-Tourne angle;
-Avance 100;
-Tourne angle;
-Avance 100;
+        Debut 
+            BasPinceau;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
 
-index = index - 1;
-Tourne angle;
-Avance 100;
-Fin;
+            index = index - 1;
+            Tourne angle;
+            Avance 100;
+        Fin
+    ;
 
 Fin

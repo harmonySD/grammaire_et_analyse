@@ -2,18 +2,19 @@ Var x;
 Var y;
 Var i;
 Debut
-x = 36;
-y = 5;
-i = 36;
-Avance 250;
-Tourne -90;
-Avance 250;
-Tant que i Faire
-    Debut
-        Tourne 360/x;
-        BasPinceau;
-        Avance y;
-        HautPinceau;
-        i = i - 1;
-    Fin
+    x = 36;
+    y = 5;
+    i = 36;
+    Avance 250;
+    Tourne -90;
+    Avance 250;
+    Tant que i Faire
+        Debut
+            Tourne 360/x;
+            BasPinceau;
+            Avance y;
+            HautPinceau;
+            i = i - 1;
+        Fin
+    ;
 Fin

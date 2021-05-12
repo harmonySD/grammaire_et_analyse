@@ -10,10 +10,10 @@ Tant que index Faire
 
     Si index - 3 Alors
         ChangeCouleur 255 100 0;
-        
+    ;    
     Si index - 2 Alors
         ChangeCouleur 100 40 250;
-        
+    ;   
     BasPinceau;
     Avance 100;
     Tourne angle;
@@ -28,5 +28,5 @@ Tant que index Faire
     Avance 100;
 
     Fin
-
+;
 Fin

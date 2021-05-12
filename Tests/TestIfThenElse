@@ -1,37 +1,38 @@
 Var angle;
 Var index;
 Debut
-angle = 0 - 90;
-index = 3;
+    angle = 0 - 90;
+    index = 3;
 
-Tant que index Faire
+    Tant que index Faire
 
-    Debut
-
-    Si index - 3 Alors
         Debut
-        Si index - 2 Alors
-            ChangeCouleur 255 0 0;
-        Sinon
-            ChangeCouleur 0 255 0;
+
+            Si index - 3 Alors
+                Debut
+                    Si index - 2 Alors
+                        ChangeCouleur 255 0 0;
+                    Sinon
+                        ChangeCouleur 0 255 0;
+                    ;
+                Fin
+            Sinon
+                ChangeCouleur 0 0 255;
+            ;   
+                
+            BasPinceau;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
+            Tourne angle;
+            Avance 100;
+
+            index = index - 1;
+            Tourne angle;
+            Avance 100;
+
         Fin
-    Sinon
-        ChangeCouleur 0 0 255;
-        
-
-    BasPinceau;
-    Avance 100;
-    Tourne angle;
-    Avance 100;
-    Tourne angle;
-    Avance 100;
-    Tourne angle;
-    Avance 100;
-
-    index = index - 1;
-    Tourne angle;
-    Avance 100;
-
-    Fin
-
+    ;    
 Fin

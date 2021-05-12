@@ -13,11 +13,6 @@ open Ast
 %left MULT
 %left DIV
 
-%left ALORS
-%left SINON
-
-
-
 %start <Ast.programme> s 
 %%
 
@@ -36,9 +31,9 @@ instruction:
   | BPINCEAU PV{ BasPinceau }
   | HPINCEAU PV{ HautPinceau }
   | id=IDENT EGAL e=expression PV{ Egal(id,e) }
-  | SI e=expression ALORS i=instruction {Sialors(e,i)}
-  | SI e=expression ALORS i=instruction SINON i2=instruction {Sias(e,i,i2)} 
-  | TANTQ e=expression FAIRE i=instruction   {Tantq(e,i)}
+  | SI e=expression ALORS i=instruction PV {Sialors(e,i)}
+  | SI e=expression ALORS i=instruction SINON i2=instruction PV {Sias(e,i,i2)} 
+  | TANTQ e=expression FAIRE i=instruction  PV {Tantq(e,i)}
   | COUL r=NB g=NB b=NB  PV{Couleur(r,g,b)}
   | EP t=NB PV {Epaisseur t}
 

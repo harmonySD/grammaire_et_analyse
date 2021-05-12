@@ -2,61 +2,61 @@ Var angle;
 
 Debut
 
-ChangeEpaisseur 3;
-angle =0;
-ChangeCouleur 255 230 74;
-Tourne 0-45;
-HautPinceau;
+    ChangeEpaisseur 3;
+    angle =0;
+    ChangeCouleur 255 230 74;
+    Tourne 0-45;
+    HautPinceau;
 
-Avance 100;
-BasPinceau;
-Tourne 45;
-Avance 400;
+    Avance 100;
+    BasPinceau;
+    Tourne 45;
+    Avance 400;
 
-Tourne 0-150;
-Avance 150;
+    Tourne 0-150;
+    Avance 150;
 
-Tourne 150-90;
-Avance 100;
+    Tourne 150-90;
+    Avance 100;
 
-Tourne 60;
-Avance 150;
+    Tourne 60;
+    Avance 150;
 
-ChangeCouleur 25 200 200;
+    ChangeCouleur 25 200 200;
 
-Tourne 0-150;
-Avance 400;
+    Tourne 0-150;
+    Avance 400;
 
-Tourne 0-90;
-Avance 250;
+    Tourne 0-90;
+    Avance 250;
 
-HautPinceau;
+    HautPinceau;
 
-Tourne 0-90;
+    Tourne 0-90;
 
-Avance 180;
-Tourne 0-90;
-Avance 50;
+    Avance 180;
+    Tourne 0-90;
+    Avance 50;
 
-ChangeCouleur 0 255 80;
-BasPinceau;
-Avance 50;
-Tourne 180+40;
-Avance 30;
+    ChangeCouleur 0 255 80;
+    BasPinceau;
+    Avance 50;
+    Tourne 180+40;
+    Avance 30;
 
-Tourne 0-70;
-Avance 40;
+    Tourne 0-70;
+    Avance 40;
 
-HautPinceau;
-Tourne 0-150;
-Avance 100;
+    HautPinceau;
+    Tourne 0-150;
+    Avance 100;
 
-BasPinceau;
-Avance 50;
-Tourne 180+40;
-Avance 30;
+    BasPinceau;
+    Avance 50;
+    Tourne 180+40;
+    Avance 30;
 
-Tourne 0-70;
-Avance 40;
+    Tourne 0-70;
+    Avance 40;
 Fin
 
