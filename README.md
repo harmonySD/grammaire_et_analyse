@@ -34,7 +34,7 @@ Pour afficher l'arbre de syntaxe abstraitre, decommenter la permiere partie du m
 
 - Etape 1 : évaluations des tâches
 - Etape 2 : partages des tâches
-- Etape 3 : sprint (entreaide au besoin via discord)
+- Etape 3 : sprint (entraide au besoin via discord)
 - Etape 4 : retour à l'étape 1
 
 ## Extensions
