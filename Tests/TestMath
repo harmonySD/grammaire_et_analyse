@@ -1,0 +1,20 @@
+Var angle;
+Var index;
+
+Debut
+    Si 3 * -5 + 5 Alors
+        ChangeCouleur 255 0 0;
+    Sinon
+        ChangeCouleur 0 0 255;
+    ;
+
+    angle = 0-90;
+    BasPinceau;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
+    Tourne angle;
+    Avance 100;
+Fin
