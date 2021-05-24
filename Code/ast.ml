@@ -60,9 +60,9 @@ and as_string_instruction2 = function
   | Sialors (e,i) -> "( Si"^(as_string e)^" Alors ["^(as_string_instruction2 i)^"] )"
   | Sias (e,i,i2) -> "("^"Si "^(as_string e )^" Alors ["^(as_string_instruction2 i) ^"] Sinon ["^(as_string_instruction2 (i2))^"] )"
   | Tantq (e,i) -> "("^"Tant que "^(as_string e)^" Faire ["^(as_string_instruction2 i)^"] )"
-  | Bloc ins -> (match ins with
+  | Bloc ins -> " Debut " ^ (match ins with
                       |[]-> ""
-                      |x::y-> as_string_instruction2 x ^as_string_instruction y)
+                      |x::y-> as_string_instruction2 x ^as_string_instruction y) ^ " Fin "
   
 (* Affiche l'arbre syntaxique du programme *)
  let as_string_programme prog = 
