@@ -1,12 +1,12 @@
 (*Pour afficher l'arbre syntaxique decommenter la suite *)
-
+(*
 let lexbuf = Lexing.from_channel stdin 
 
 let ast = Parser.s Lexer.main lexbuf 
 
 let _ = Printf.printf "Parse:\n%s\n" (Ast.as_string_programme ast);Typecheck.check_program ast
+*)
 
-(*
 (* programme principal *)
 
   let print_position outx lexbuf =
@@ -38,4 +38,3 @@ let _ =
   | Typecheck.Error s ->
      Printf.fprintf stderr "Erreur de type : %s\n" s;
      exit (-1) 
-*)
